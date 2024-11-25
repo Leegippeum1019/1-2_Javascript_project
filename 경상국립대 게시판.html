@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경상국립대학교 게시판</title>
+    <link rel="stylesheet" href="./경상국립대.css">
+    <script src="./글자수 제한.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="메인 홈페이지.html"><img src="../html/d3.png"></a><!--로고 이미지 들어갈 예정-->
+        </div>
+        <div class="site-info">
+            <h1 id="website-name">웹사이트 이름 (밥약속)</h1>
+        </div>
+    </div>
+    <div class="container"> <!--밑 부분-->
+        <div class="sidebar"> <!--옵션바-->
+            <img src="../html/d3.png" id="profile"><!--프로필 사진 들어갈수도?-->
+            <h1 id="first_h1"><b>(사용자 이름)</b></h1>
+            <hr id="first_hr">
+            <h5><b>소속 학교</b></h5>
+            <h5><b>학번? 학과?</b></h5>
+            <hr id="first_hr">
+
+            <h2 id="name">Category</h2>
+            <ul class="category_first">
+                <li>
+                    <span>학교별</span>
+                    <ul class="category_ul">
+                        <li id="ya">- 연암공과대학교</li>
+                        <li id="gs_1">- 국립경상대학교</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>학과별</span>
+                    <ul class="category_ul">
+                        <li>- 기계공학과</li>
+                        <li>- 전기전자공학과</li>
+                        <li>- 스마트 기계공학과 </li>
+                        <li>- 스마트 전기전자공학과 </li>
+                        <li>- 스마트 소프트웨어학과 </li>
+                    </ul>
+                </li>
+                <li>
+                    <span>학번별</span>
+                    <ul class="category_ul">
+                        <li id="id_20">- 20학번</li>
+                        <li id="id_21">- 21학번</li>
+                        <li id="id_22">- 22학번</li>
+                        <li id="id_23">- 23학번</li>
+                        <li id="id_24">- 24학번</li>
+                        <li id="id_25">- 25학번</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>날짜/시간별</span>
+                    <ul class="category_ul">
+                        <li id="week_lun">- 평일 점심</li>
+                        <li id="week_din">- 평일 저녁</li>
+                        <li id="end_lun">- 주말 점심</li>
+                        <li id="end_din">- 주말 저녁</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div id="content_1"><!--게시판 부분--> 
+            <div class="board-header"> 
+                <h2 id="board-title">학교별 - 경상국립대학교 게시판</h2> 
+                <a href="./게시판 글쓰기 화면.html"><button id="write-button">글쓰기</button></a>
+            </div>
+
+            <div id="content_2">
+                <ul class="list content_2_ul"><!--게시글 전체 부분-->
+
+                    <hr id="content_2_hr"><!--게시글 1-->
+                    <li class="content_2_li">
+                        <div class="post-header">
+                            <b class="author">글쓴이</b>
+                            <span class="date">2024.11.6</span>
+                        </div>
+                        <a class="post-title" href="./게시글 화면.html">1번째 게시글 제목</a><!--첫번째 게시글 파일 경로 작성해야함-->
+                        <div class="post-content">
+                            게시글 내용 분량에 따라 내용이 잘릴 수 있음 더 많은 내용이 들어갑니다 아에이오우우아에이오우우아에이
+                        </div>
+                    </li>
+
+                    <hr id="content_2_hr"><!--게시글 2-->
+                    <li class="content_2_li">
+                        <div class="post-header">
+                            <b class="author">글쓴이</b>
+                            <span class="date">2024.11.7</span>
+                        </div>
+                        <a class="post-title" href="./JS 홈페이지 화면/게시글 화면.html">2번째 게시글 제목</a><!--첫번째 게시글 파일 경로 작성해야함-->
+                        <div class="post-content">
+                            게시글 내용...
+                        </div>
+                    </li>
+
+                    <hr id="content_2_hr">
+                    <li class="content_2_li">
+                        <div class="post-header">
+                            <b class="author">글쓴이</b>
+                            <span class="date">2024.11.6</span>
+                        </div>
+                        <a class="post-title" href="./JS 홈페이지 화면/게시글 화면.html">1번째 게시글 제목</a><!--첫번째 게시글 파일 경로 작성해야함-->
+                        <div class="post-content">
+                            게시글 내용... 
+                        </div>
+                    </li>
+
+                    <hr id="content_2_hr">
+                    <li class="content_2_li">
+                        <div class="post-header">
+                            <b class="author">글쓴이</b>
+                            <span class="date">2024.11.6</span>
+                        </div>
+                        <a class="post-title" href="./JS 홈페이지 화면/게시글 화면.html">1번째 게시글 제목</a><!--첫번째 게시글 파일 경로 작성해야함-->
+                        <div class="post-content">
+                            게시글 내용... 
+                        </div>
+                    </li>
+                    <hr id="content_2_hr">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

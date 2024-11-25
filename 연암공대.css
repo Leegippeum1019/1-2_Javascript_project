@@ -1,0 +1,174 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0; /*여백 제거*/
+    font-family: Arial, sans-serif; /*폰트 변경 가능*/
+}
+
+.header {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; /*사이에 공간 만든거*/
+    background-color: #f4f4f4; /*배경색 변경 가능*/
+    padding: 10px 20px;
+}
+
+.header .logo {
+    flex: 1;
+}
+
+.header .logo img {
+    height: 80px; /* 로고 이미지 크기에 따라 바뀔수 있음 */
+    width: 255px;  
+    /*로고 클릭시 메인 홈페이지 첫 화면 나오게 설정해야함 !!!*/
+}
+
+.header .site-info {
+    flex: 1;
+    text-align: center;
+}
+
+#website-name {
+    font-size: 2em; /* 웹사이트 이름 크게 설정 */
+    margin: 0; /*여백 제거*/
+    text-align: left;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar {
+    width: 255px; /*사이드바 크기 조절 가능*/
+    background-color: #f4f4f4;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /*세로 방향으로 배치*/
+    align-items: center;
+}
+
+.sidebar img {
+    width: 120px; /* 프로필 이미지 크기 조절 */
+    margin-top: 30px;
+}
+
+.sidebar h1, .sidebar h5 {
+    text-align: center;
+}
+
+.sidebar hr {
+    border: 0; /*테두리 제거*/
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.category_first {
+    list-style-type: none; /* 리스트 스타일 제거 -표시가 없어서 html로 직접 작성함 */
+    padding: 0;
+    width: 100%;
+}
+
+.category_first > li {
+    margin-bottom: 10px; /*하단 여백 지정*/
+}
+
+.category_ul {
+    list-style-type: none; /* 리스트 스타일 제거 */
+    padding-left: 20px; /* 안쪽 여백 설정 */
+    margin: 5px 0;
+}
+
+#content_1 {
+    flex: 1;
+    padding: 20px;
+    align-self: flex-start; /* 왼쪽 사이드바와 같은 눈높이 */
+}
+
+#content_2 {
+    margin-top: 20px;
+}
+
+
+.board-header {
+    display: flex; 
+    align-items: center; /* 세로로 중앙 정렬 */
+    justify-content: space-between; /* 왼쪽과 오른쪽에 공간 배분 */
+    margin-bottom: 20px; /* 아래 여백 */
+}
+
+#board-title {
+    margin: 0; /* 제목 상하 여백 제거 */
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#write-button {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    
+}
+
+#write-button {
+    padding: 10px 20px; /* 버튼 안쪽 여백 */
+    font-size: 16px; 
+    background-color: #007BFF; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; /* 버튼 모서리 둥글게 */
+    cursor: pointer; 
+}
+
+.content_2_ul {
+    list-style-type: none; /* 리스트 스타일 제거 */
+    padding: 0;
+    margin: 0;
+}
+
+.content_2_li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.author {
+    font-size: 1em;
+}
+
+.date {
+    font-size: 0.8em;
+    color: #777;
+}
+
+.post-title {
+    font-size: 1.2em;
+    color: #333;
+    text-decoration: none;
+}
+
+.post-title:hover {
+    text-decoration: underline;
+}
+
+.post-content {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #555;
+}
+
+.read-more {
+    color: gray;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}

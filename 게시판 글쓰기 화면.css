@@ -1,0 +1,170 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0; /* 여백 제거 */
+    font-family: Arial, sans-serif; /* 폰트 변경 가능 */
+}
+
+.header {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; /* 사이에 공간 만든 것 */
+    background-color: #f4f4f4; /* 배경색 변경 가능 */
+    padding: 10px 20px;
+}
+
+.header .logo {
+    flex: 1;
+}
+
+.header .logo img {
+    height: 80px; /* 로고 이미지 크기에 따라 바뀔 수 있음 */
+    width: 255px;
+    /* 로고 클릭시 메인 홈페이지 첫 화면 나오게 설정해야함 !!! */
+}
+
+.header .site-info {
+    flex: 1;
+    text-align: center;
+}
+
+#website-name {
+    font-size: 2em; /* 웹사이트 이름 크게 설정 */
+    margin: 0; /* 여백 제거 */
+    text-align: left;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar {
+    width: 255px; /* 사이드바 크기 조절 가능 */
+    background-color: #f4f4f4;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* 세로 방향으로 배치 */
+    align-items: center;
+}
+
+.sidebar img {
+    width: 120px; /* 프로필 이미지 크기 조절 */
+    margin-top: 30px;
+}
+
+.sidebar h1, .sidebar h5 {
+    text-align: center;
+}
+
+.sidebar hr {
+    border: 0; /* 테두리 제거 */
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.category_first {
+    list-style-type: none; /* 리스트 스타일 제거 -표시가 없어서 html로 직접 작성함 */
+    padding: 0;
+    width: 100%;
+}
+
+.category_first > li {
+    margin-bottom: 10px; /* 하단 여백 지정 */
+}
+
+.category_ul {
+    list-style-type: none; /* 리스트 스타일 제거 */
+    padding-left: 20px; /* 안쪽 여백 설정 */
+    margin: 5px 0;
+}
+
+#content_1 {
+    flex: 1;
+    padding: 20px;
+    align-self: flex-start; /* 왼쪽 사이드바와 같은 눈높이 */
+    border-radius: 8px; /* 모서리 둥글게 */
+}
+
+.board-header {
+    display: flex; /* flexbox 사용 */
+    align-items: center; /* 세로로 중앙 정렬 */
+    justify-content: space-between; /* 왼쪽과 오른쪽에 공간 배분 */
+    margin-bottom: 20px; /* 아래 여백 */
+}
+
+#board-title {
+    margin: 0; /* 제목 상하 여백 제거 */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.post-form {
+    background-color: #fff; /* 배경색 흰색으로 설정 */
+    padding: 20px; /* 안쪽 여백 설정 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 그림자 추가 */
+    margin-bottom: 20px; /* 하단 여백 설정 */
+}
+
+.form-group {
+    margin-bottom: 20px; /* 하단 여백을 더 넓게 설정 */
+}
+
+.form-group input,.form-group textarea {
+    width: 300px;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px; /* 내부 여백 설정 */
+    border: 1px solid #ccc; /* 테두리 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    font-size: 16px; /* 글씨 크기 설정 */
+    box-sizing: border-box; /* padding과 border를 포함하여 전체 너비를 맞춤 */
+}
+
+.comments-section {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    
+}
+.comments-section_2 {
+    display: inline-block;
+   
+    margin-bottom: 20px;
+    
+}
+
+.comments-section h4 {
+    margin-bottom: 10px;
+}
+
+.comments-section textarea {
+    width: calc(100% - 20px);
+    height: 500px;
+    margin-bottom: 10px;
+}
+
+.comments-section input {
+    width: calc(100% - 20px);
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.comments-section button {
+    width: calc(100% - 20px); /* 버튼도 동일하게 길이 맞추기 */
+    display: block;
+    margin-bottom: 20px;
+}
+
+#submit-button {
+    padding: 10px 20px; /* 버튼 안쪽 여백 */
+    font-size: 16px; /* 글씨 크기 */
+    background-color: #007BFF;
+    color: white; 
+    border: none; 
+    border-radius: 4px; /* 버튼 모서리 둥글게 */
+    cursor: pointer;
+}
