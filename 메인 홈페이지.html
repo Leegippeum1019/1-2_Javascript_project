@@ -3,131 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자바스크립트 프로젝트</title>
+    <title>게시판</title>
     <link rel="stylesheet" href="./메인 홈페이지.css">
-    <script src="./글자수 제한.js" defer></script>
 </head>
 <body>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        const firebaseConfig = { 
+            apiKey: "AIzaSyDuz4A-YN9-hZXemSXJ0MIvADk23zNLnGw",
+            authDomain: "jsproject-9ebf7.firebaseapp.com",
+            databaseURL: "https://jsproject-9ebf7-default-rtdb.firebaseio.com",
+            projectId: "jsproject-9ebf7",
+            storageBucket: "jsproject-9ebf7.firebasestorage.app",
+            messagingSenderId: "595770505966",
+            appId: "1:595770505966:web:033f9ab267afc4b27991ff"
+        };
+        firebase.initializeApp(firebaseConfig); 
+    </script>
+
     <div class="header">
         <div class="logo">
-            <a href="메인 홈페이지.html"><img src="../html/d3.png"></a><!--로고 이미지 들어갈 예정-->
+            <a href="메인 홈페이지.html"><img src="./d3.jpg"></a><!--로고 이미지 들어갈 예정-->
         </div>
         <div class="site-info">
-            <h1 id="website-name">웹사이트 이름 (밥약속)</h1>
-        </div>
-        <div class="login">
-            
+            <h1 id="website-name">Table Talk</h1>
         </div>
     </div>
-    <div class="container"> <!--밑 부분-->
-        <div class="sidebar"> <!--옵션바-->
+    <div class="container">
+        <div class="sidebar">
             <img src="../html/d3.png" id="profile"><!--프로필 사진 들어갈수도?-->
-            <h1 id="first_h1"><b>(사용자 이름)</b></h1>
+            <h1 id="first_h1"><b>(User Name)</b></h1>
             <hr id="first_hr">
-            <h5><b>소속 학교</b></h5>
-            <h5><b>학번? 학과?</b></h5>
+            <div id="auth-buttons">
+                <a href="./로그인.html"><button class="sign-button">Table Talk 로그인</button></a><br><br>
+                <a href="./회원가입.html"><button class="sign-button">Table Talk 회원가입</button></a><br>
+            </div>
             <hr id="first_hr">
-
             <h2 id="name">Category</h2>
             <ul class="category_first">
-                <li>
-                    <span>학교별</span>
-                    <ul class="category_ul">
-                        <li id="ya"><a href="옵션 게시판 화면.html">- 연암공과대학교</a></li>
-                        <li id="gs_1">- 국립경상대학교</li>
-                    </ul>
-                </li>
-                <li>
-                    <span>학과별</span>
-                    <ul class="category_ul">
-                        <li>- 기계공학과</li>
-                        <li>- 전기전자공학과</li>
-                        <li>- 스마트 기계공학과 </li>
-                        <li>- 스마트 전기전자공학과 </li>
-                        <li>- 스마트 소프트웨어학과 </li>
-                    </ul>
-                </li>
-                <li>
-                    <span>학번별</span>
-                    <ul class="category_ul">
-                        <li id="id_20">- 20학번</li>
-                        <li id="id_21">- 21학번</li>
-                        <li id="id_22">- 22학번</li>
-                        <li id="id_23">- 23학번</li>
-                        <li id="id_24">- 24학번</li>
-                        <li id="id_25">- 25학번</li>
-                    </ul>
-                </li>
-                <li>
-                    <span>날짜/시간별</span>
-                    <ul class="category_ul">
-                        <li id="week_lun">- 평일 점심</li>
-                        <li id="week_din">- 평일 저녁</li>
-                        <li id="end_lun">- 주말 점심</li>
-                        <li id="end_din">- 주말 저녁</li>
-                    </ul>
-                </li>
+              <li>
+                <span>학교별</span>
+                <ul class="category_ul">
+                    <li id="ya"><a href="연암공대 게시판.html">- 연암공과대학교</a></li>
+                    <li id="gs_1"><a href="경상국립대 게시판.html">- 국립경상대학교</a></li>
+                </ul>
+            </li>
+            <li>
+                <span>학과별</span>
+                <ul class="category_ul">
+                    <li><a href="기계공학과.html">- 기계공학과</a></li>
+                    <li><a href="전기전자공학과.html">- 전기전자공학과</a></li>
+                    <li><a href="스기.html">- 스마트 기계공학과</a></li>
+                    <li><a href="스전.html">- 스마트 전기전자공학과</a></li>
+                    <li><a href="스소.html">- 스마트 소프트웨어학과</a></li>
+                </ul>
+            </li>
+            <li>
+                <span>학번별</span>
+                <ul class="category_ul">
+                    <li id="id_20"><a href="20.html">- 20학번</a></li>
+                    <li id="id_21"><a href="21.html">- 21학번</a></li>
+                    <li id="id_22"><a href="22.html">- 22학번</a></li>
+                    <li id="id_23"><a href="23.html">- 23학번</a></li>
+                    <li id="id_24"><a href="24.html">- 24학번</a></li>
+                    <li id="id_25"><a href="25.html">- 25학번</a></li>
+                </ul>
+            </li>
+            <li>
+                <span>날짜/시간별</span>
+                <ul class="category_ul">
+                    <li id="week_lun"><a href="평일 점심.html">- 평일 점심</a></li>
+                    <li id="week_din"><a href="평일 저녁.html">- 평일 저녁</a></li>
+                    <li id="end_lun"><a href="주말 점심.html">- 주말 점심</a></li>
+                    <li id="end_din"><a href="주말 저녁.html">- 주말 저녁</a></li>
+                </ul>
+            </li>
             </ul>
         </div>
 
         <div id="content_1"><!--게시판 부분-->
-            <h2 id="board-title">전체 게시판</h2>
+            <div class="board-header">
+                <h2 id="board-title">전체 게시판</h2>
+                <a href="./게시판 글쓰기 화면.html"><button id="write-button">글쓰기</button></a>
+            </div>
             <div id="content_2">
-                <ul class="list content_2_ul">
-
-                        <hr id="content_2_hr"><!--게시글 1-->
-                        <li class="content_2_li">
-                            <div class="post-header">
-                                <b class="author">글쓴이</b>
-                                <span class="date">2024.11.6</span>
-                            </div>
-                            <a class="post-title" href="./게시글 화면.html">1번째 게시글 제목</a><!--첫번째 게시글 파일 경로 작성해야함-->
-                            <div class="post-content">
-                                게시글 내용 분량에 따라 내용이 잘릴 수 있음 더 많은 내용이 들어갑니다 아에이오우우아에이오우우아에이
-                            </div>
-                        </li>
-    
-                        <hr id="content_2_hr"><!--게시글 2-->
-                        <li class="content_2_li">
-                            <div class="post-header">
-                                <b class="author">글쓴이</b>
-                                <span class="date">2024.11.7</span>
-                            </div>
-                            <a class="post-title" href="./JS 홈페이지 화면/게시글 화면.html">2번째 게시글 제목</a><!--첫번째 게시글 파일 경로 작성해야함-->
-                            <div class="post-content">
-                                게시글 내용 분량에 따라 내용이 잘릴 수 있음 
-                            </div>
-                        </li>
-    
-                        <hr id="content_2_hr">
-                        <li class="content_2_li">
-                            <div class="post-header">
-                                <b class="author">글쓴이</b>
-                                <span class="date">2024.11.6</span>
-                            </div>
-                            <a class="post-title" href="./JS 홈페이지 화면/게시글 화면.html">1번째 게시글 제목</a><!--첫번째 게시글 파일 경로 작성해야함-->
-                            <div class="post-content">
-                                게시글 내용 분량에 따라 내용이 잘릴 수 있음 
-                            </div>
-                        </li>
-    
-                        <hr id="content_2_hr">
-                        <li class="content_2_li">
-                            <div class="post-header">
-                                <b class="author">글쓴이</b>
-                                <span class="date">2024.11.6</span>
-                            </div>
-                            <a class="post-title" href="./JS 홈페이지 화면/게시글 화면.html">1번째 게시글 제목</a><!--첫번째 게시글 파일 경로 작성해야함-->
-                            <div class="post-content">
-                                게시글 내용 분량에 따라 내용이 잘릴 수 있음 
-                            </div>
-                        </li>
-                        <hr id="content_2_hr">
-
+                <ul class="list content_2_ul" id="post-list"><!--게시글 전체 부분-->
+                    <!-- 게시글이 여기에 표시될 예정 -->
                 </ul>
             </div>
         </div>
     </div>
-    <script src="./main.js"></script>
+
+    <script>
+        var db = firebase.firestore();//Firebase Firestore 데이터베이스에 연결하는 코드
+        
+        //"posts" 컬렉션에 저장된 게시물을 불러와서 HTML 페이지에 동적으로 추가하는 역할
+        function loadPosts() {
+            db.collection("posts").orderBy("createdAt", "desc").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    var post = doc.data();
+                    var liElement = document.createElement("li");
+                    liElement.className = "content_2_li";
+    
+                    var postHeader = document.createElement("div");
+                    postHeader.className = "post-header";
+                    var authorElement = document.createElement("b");
+                    authorElement.className = "author";
+                    authorElement.textContent = post.name;
+                    var dateElement = document.createElement("span");
+                    dateElement.className = "date";
+                    dateElement.textContent = post.datetime;
+    
+                    postHeader.appendChild(authorElement);
+                    postHeader.appendChild(dateElement);
+                    liElement.appendChild(postHeader);
+    
+                    var titleElement = document.createElement("a");
+                    titleElement.className = "post-title";
+                    titleElement.href = `./게시글 화면.html?id=${doc.id}&title=${encodeURIComponent(post.title)}&name=${encodeURIComponent(post.name)}&school=${encodeURIComponent(post.school)}&major=${encodeURIComponent(post.major)}&entrance=${encodeURIComponent(post.entrance)}&datetime=${encodeURIComponent(post.datetime)}&content=${encodeURIComponent(post.content)}`;
+                    titleElement.textContent = post.title;
+                    liElement.appendChild(titleElement);
+    
+                    var contentElement = document.createElement("div");
+                    contentElement.className = "post-content";
+                    if (post.content.length > 100) {
+                        const truncatedContent = post.content.slice(0, 100) + '...';
+                        contentElement.innerHTML = truncatedContent + ` <a class="read-more" href="./게시글 화면.html?id=${doc.id}&title=${encodeURIComponent(post.title)}&name=${encodeURIComponent(post.name)}&school=${encodeURIComponent(post.school)}&major=${encodeURIComponent(post.major)}&entrance=${encodeURIComponent(post.entrance)}&datetime=${encodeURIComponent(post.datetime)}&content=${encodeURIComponent(post.content)}">더 보기</a>`;
+                    } else {
+                        contentElement.textContent = post.content;
+                    }
+                    liElement.appendChild(contentElement);
+    
+                    var hrElement = document.createElement("hr");
+                    hrElement.id = "content_2_hr";
+    
+                    document.getElementById("post-list").appendChild(hrElement);
+                    document.getElementById("post-list").appendChild(liElement);
+                });
+            }).catch((error) => {
+                console.error("Error loading posts: ", error);
+            });
+        }
+    
+        function checkLoginStatus() {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            if (loggedInUser) {
+                document.getElementById('first_h1').textContent = loggedInUser.name;
+                const authButtons = document.getElementById('auth-buttons');
+                authButtons.innerHTML = ''; // 기존 로그인/회원가입 버튼 제거
+                const logoutButton = document.createElement('button');
+                logoutButton.className = 'sign-button';
+                logoutButton.id = 'logout-button';
+                logoutButton.textContent = '로그아웃';
+                authButtons.appendChild(logoutButton);
+    
+                logoutButton.addEventListener('click', function () {
+                    localStorage.removeItem('loggedInUser');
+                    window.location.reload();
+                });
+            } else {
+                document.getElementById('first_h1').textContent = "(User Name)";
+            }
+        }
+
+
+        function loadPostsByCategory(schoolCategory) {
+            db.collection('posts')
+            .where("school", "==", schoolCategory)  // 카테고리별 게시글을 필터링
+            .onSnapshot(snapshot => {
+            // 게시글 목록을 비우고 새로 추가
+                const postListContainer = document.getElementById('post-list');
+                postListContainer.innerHTML = "";  // 기존 게시글 목록 비우기
+
+                snapshot.forEach(doc => {
+                    const post = doc.data();
+                    const postItem = document.createElement('div');
+                    postItem.className = 'post-item';
+                    postItem.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <p>${post.content}</p>
+                    <button onclick="loadPostDetails('${doc.id}')">자세히 보기</button> <!-- 게시글 상세 보기 버튼 -->
+                `;
+                postListContainer.appendChild(postItem);
+                });
+            });
+        }
+
+    
+        document.addEventListener("DOMContentLoaded", function() {
+            loadPosts();
+            checkLoginStatus();
+        });
+    </script>
+  
 </body>
 </html>

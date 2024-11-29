@@ -3,13 +3,14 @@ body {
     flex-direction: column;
     margin: 0; /*여백 제거*/
     font-family: Arial, sans-serif; /*폰트 변경 가능*/
+    
 }
 
 .header {
     display: flex; 
     align-items: center;
     justify-content: space-between; /*사이에 공간 만든거*/
-    background-color: #f4f4f4; /*배경색 변경 가능*/
+    background-color: #f4f4f4 ; /*배경색 변경 가능*/
     padding: 10px 20px;
 }
 
@@ -29,9 +30,11 @@ body {
 }
 
 #website-name {
-    font-size: 2em; /* 웹사이트 이름 크게 설정 */
+    font-size: 50px; /* 웹사이트 이름 크게 설정 */
+    font-family: 'Arial Black', sans-serif;
     margin: 0; /*여백 제거*/
     text-align: left;
+    color: #456e2a ;
 }
 
 .container {
@@ -41,7 +44,7 @@ body {
 
 .sidebar {
     width: 255px; /*사이드바 크기 조절 가능*/
-    background-color: #f4f4f4;
+    background-color: #f4f4f4  ;
     padding: 20px;
     display: flex;
     flex-direction: column; /*세로 방향으로 배치*/
@@ -86,11 +89,20 @@ body {
     align-self: flex-start; /* 왼쪽 사이드바와 같은 눈높이 */
 }
 
-#board-title {
-    margin-top: 4px;
-    text-align: left; /* 중앙 왼쪽으로 배치 (변경 가능) */
+
+.board-header {
+    display: flex;
+    align-items: center; /* 세로로 중앙 정렬 */
+    justify-content: space-between; /* 왼쪽과 오른쪽에 공간 배분 */
+    margin-bottom: 20px; /* 아래 여백 */
 }
 
+#board-title {
+    margin: 0; /* 제목 상하 여백 제거 */
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 #content_2 {
     margin-top: 20px;
 }
@@ -145,4 +157,31 @@ body {
 
 .read-more:hover {
     text-decoration: underline;
+}
+
+#write-button {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px; /* 버튼 안쪽 여백 */
+    font-size: 16px; 
+    background-color: #456e2a ;
+    color: white; 
+    border: none; 
+    border-radius: 4px; /* 버튼 모서리 둥글게 */
+    cursor: pointer; 
+}
+.sign-button {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px; /* 버튼 안쪽 여백 */
+    font-size: 16px; 
+    background-color: #456e2a ;
+    color: white; 
+    border: none; 
+    border-radius: 4px; /* 버튼 모서리 둥글게 */
+    cursor: pointer; 
+    width: 200px;
+    height: 45px;
 }

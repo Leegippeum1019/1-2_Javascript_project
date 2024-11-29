@@ -29,11 +29,12 @@ body {
 }
 
 #website-name {
-    font-size: 2em; /* 웹사이트 이름 크게 설정 */
-    margin: 0; /* 여백 제거 */
+    font-size: 50px; /* 웹사이트 이름 크게 설정 */
+    font-family: 'Arial Black', sans-serif;
+    margin: 0; /*여백 제거*/
     text-align: left;
+    color: #456e2a ;
 }
-
 .container {
     display: flex;
     flex: 1;
@@ -162,9 +163,23 @@ body {
 #submit-button {
     padding: 10px 20px; /* 버튼 안쪽 여백 */
     font-size: 16px; /* 글씨 크기 */
-    background-color: #007BFF;
+    background-color: #456e2a ;
     color: white; 
     border: none; 
     border-radius: 4px; /* 버튼 모서리 둥글게 */
     cursor: pointer;
+}
+.sign-button {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px; /* 버튼 안쪽 여백 */
+    font-size: 16px; 
+    background-color: #456e2a ;
+    color: white; 
+    border: none; 
+    border-radius: 4px; /* 버튼 모서리 둥글게 */
+    cursor: pointer; 
+    width: 200px;
+    height: 45px;
 }
