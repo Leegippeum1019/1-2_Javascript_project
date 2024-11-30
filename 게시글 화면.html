@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>실시간 댓글</title>
+    <title>게시글</title>
     <link rel="stylesheet" href="게시글 화면.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
-        const firebaseConfig = { 
+        const firebaseConfig = {
             apiKey: "AIzaSyDuz4A-YN9-hZXemSXJ0MIvADk23zNLnGw",
             authDomain: "jsproject-9ebf7.firebaseapp.com",
             databaseURL: "https://jsproject-9ebf7-default-rtdb.firebaseio.com",
@@ -36,7 +36,6 @@
 
     <div class="container">
         <div class="sidebar">
-            <img src="../html/d3.png" id="profile">
             <h1 id="first_h1"><b>(User Name)</b></h1>
             <hr id="first_hr">
             <div id="auth-buttons">
@@ -99,7 +98,9 @@
                     날짜/시간: <span id="post-datetime"></span><br><br>
                 </h3>
             </div>
-            
+            <div class="post">
+                <h3 id="post-content"><!--내용 들어올 예정--></h3>
+            </div>
             <div class="comments-section">
                 <h3>댓글</h3>
                 
@@ -137,6 +138,7 @@
             document.getElementById('post-major').textContent = postData.major;
             document.getElementById('post-entrance').textContent = postData.entrance;
             document.getElementById('post-datetime').textContent = postData.datetime;
+            document.getElementById('post-content').textContent = postData.content; // 게시글 내용 표시 추가
             loadComments(postData.id);
         }
 
@@ -173,32 +175,26 @@
         });
 
         function checkLoginStatus() {
-            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            const authButtons = document.getElementById('auth-buttons');
             if (loggedInUser) {
-                document.getElementById('first_h1').textContent = loggedInUser.name;
-                const authButtons = document.getElementById('auth-buttons');
-                authButtons.innerHTML = ''; // 기존 로그인/회원가입 버튼 제거
-                const logoutButton = document.createElement('button');
-                logoutButton.className = 'sign-button';
-                logoutButton.id = 'logout-button';
-                logoutButton.textContent = '로그아웃';
-                authButtons.appendChild(logoutButton);
-    
-                logoutButton.addEventListener('click', function () {
+                authButtons.innerHTML = `
+                    <button class="sign-button" id="logout-button">로그아웃</button>
+                `;
+                const userNameDisplay = document.getElementById('first_h1');
+                userNameDisplay.innerHTML = `<b>${loggedInUser}</b>`;
+                document.getElementById('logout-button').addEventListener('click', function() {
                     localStorage.removeItem('loggedInUser');
-                    window.location.reload();
+                    alert('로그아웃되었습니다.');
+                    location.reload();
                 });
-            } else {
-                document.getElementById('first_h1').textContent = "(User Name)";
             }
         }
 
-        document.addEventListener('DOMContentLoaded', loadPost);
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPost();
             checkLoginStatus();
         });
-
-
     </script>
 </body>
 </html>
