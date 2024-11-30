@@ -27,13 +27,12 @@
 
     <div class="header">
         <div class="logo">
-            <a href="메인 홈페이지.html"><img src="./d3.jpg"></a>
+            <a href="메인 홈페이지.html"><img src="./d3.jpg"></a><!--로고 이미지 들어갈 예정-->
         </div>
         <div class="site-info">
             <h1 id="website-name">Table Talk</h1>
         </div>
     </div>
-
     <div class="container">
         <div class="sidebar">
             <h1 id="first_h1"><b>(User Name)</b></h1>
@@ -139,7 +138,7 @@
             document.getElementById('post-entrance').textContent = postData.entrance;
             document.getElementById('post-datetime').textContent = postData.datetime;
             document.getElementById('post-content').textContent = postData.content; // 게시글 내용 표시 추가
-            loadComments(postData.id);
+            
         }
 
         const commentForm = document.getElementById('comment-form');
@@ -163,36 +162,57 @@
 
         const commentsList = document.getElementById('comments-list');
 
+        db.collection('comments').orderBy('timestamp', 'desc').onSnapshot(function(snapshot) {
+            commentsList.innerHTML = '';
+            snapshot.forEach(doc => {
+                const comment = doc.data();
+                const commentElement = document.createElement('div');
+                commentElement.className = 'comment';
+                commentElement.innerHTML = `
+                    <strong>${comment.author}</strong>: ${comment.text}
+                `;
+                commentsList.appendChild(commentElement);
+            });
+        });
+
+        function checkLoginStatus() {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            if (loggedInUser) {
+                document.getElementById('first_h1').textContent = loggedInUser.name;
+                const authButtons = document.getElementById('auth-buttons');
+                authButtons.innerHTML = ''; // 기존 로그인/회원가입 버튼 제거
+                const logoutButton = document.createElement('button');
+                logoutButton.className = 'sign-button';
+                logoutButton.id = 'logout-button';
+                logoutButton.textContent = '로그아웃';
+                authButtons.appendChild(logoutButton);
+    
+                logoutButton.addEventListener('click', function () {
+                    localStorage.removeItem('loggedInUser');
+                    window.location.reload();
+                });
+            } else {
+                document.getElementById('first_h1').textContent = "(User Name)";
+            }
+        }
+
         db.collection('comments').orderBy('timestamp', 'asc').onSnapshot((querySnapshot) => {
             commentsList.innerHTML = '';
             querySnapshot.forEach((doc) => {
                 const comment = doc.data();
                 const divElement = document.createElement('div');
-                divElement.classList.add('comment');
-                divElement.textContent = `${comment.author}: ${comment.text}`;
+                if(comment.postId == getPostDataFromUrl().id) {
+                    divElement.classList.add('comment');
+                    divElement.textContent = `${comment.author}: ${comment.text}`;
+                }
                 commentsList.appendChild(divElement);
             });
         });
 
-        function checkLoginStatus() {
-            const loggedInUser = localStorage.getItem('loggedInUser');
-            const authButtons = document.getElementById('auth-buttons');
-            if (loggedInUser) {
-                authButtons.innerHTML = `
-                    <button class="sign-button" id="logout-button">로그아웃</button>
-                `;
-                const userNameDisplay = document.getElementById('first_h1');
-                userNameDisplay.innerHTML = `<b>${loggedInUser}</b>`;
-                document.getElementById('logout-button').addEventListener('click', function() {
-                    localStorage.removeItem('loggedInUser');
-                    alert('로그아웃되었습니다.');
-                    location.reload();
-                });
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
+        window.onload = function() {
             loadPost();
+        };
+        document.addEventListener("DOMContentLoaded", function() {
             checkLoginStatus();
         });
     </script>

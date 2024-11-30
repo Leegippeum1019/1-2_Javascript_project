@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판</title>
+    <title>Table Talk</title>
     <link rel="stylesheet" href="./메인 홈페이지.css">
 </head>
 <body>
@@ -35,7 +35,6 @@
     </div>
     <div class="container">
         <div class="sidebar">
-            <img src="../html/d3.png" id="profile"><!--프로필 사진 들어갈수도?-->
             <h1 id="first_h1"><b>(User Name)</b></h1>
             <hr id="first_hr">
             <div id="auth-buttons">
@@ -45,50 +44,50 @@
             <hr id="first_hr">
             <h2 id="name">Category</h2>
             <ul class="category_first">
-              <li>
-                <span>학교별</span>
-                <ul class="category_ul">
-                    <li id="ya"><a href="연암공대 게시판.html">- 연암공과대학교</a></li>
-                    <li id="gs_1"><a href="경상국립대 게시판.html">- 국립경상대학교</a></li>
-                </ul>
-            </li>
-            <li>
-                <span>학과별</span>
-                <ul class="category_ul">
-                    <li><a href="기계공학과.html">- 기계공학과</a></li>
-                    <li><a href="전기전자공학과.html">- 전기전자공학과</a></li>
-                    <li><a href="스기.html">- 스마트 기계공학과</a></li>
-                    <li><a href="스전.html">- 스마트 전기전자공학과</a></li>
-                    <li><a href="스소.html">- 스마트 소프트웨어학과</a></li>
-                </ul>
-            </li>
-            <li>
-                <span>학번별</span>
-                <ul class="category_ul">
-                    <li id="id_20"><a href="20.html">- 20학번</a></li>
-                    <li id="id_21"><a href="21.html">- 21학번</a></li>
-                    <li id="id_22"><a href="22.html">- 22학번</a></li>
-                    <li id="id_23"><a href="23.html">- 23학번</a></li>
-                    <li id="id_24"><a href="24.html">- 24학번</a></li>
-                    <li id="id_25"><a href="25.html">- 25학번</a></li>
-                </ul>
-            </li>
-            <li>
-                <span>날짜/시간별</span>
-                <ul class="category_ul">
-                    <li id="week_lun"><a href="평일 점심.html">- 평일 점심</a></li>
-                    <li id="week_din"><a href="평일 저녁.html">- 평일 저녁</a></li>
-                    <li id="end_lun"><a href="주말 점심.html">- 주말 점심</a></li>
-                    <li id="end_din"><a href="주말 저녁.html">- 주말 저녁</a></li>
-                </ul>
-            </li>
+                <li>
+                    <span>학교별</span>
+                    <ul class="category_ul">
+                        <li id="ya"><a href="연암공대 게시판.html">- 연암공과대학교</a></li>
+                        <li id="gs_1"><a href="경상국립대 게시판.html">- 국립경상대학교</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span>학과별</span>
+                    <ul class="category_ul">
+                        <li><a href="기계공학과.html">- 기계공학과</a></li>
+                        <li><a href="전기전자공학과.html">- 전기전자공학과</a></li>
+                        <li><a href="스기.html">- 스마트 기계공학과</a></li>
+                        <li><a href="스전.html">- 스마트 전기전자공학과</a></li>
+                        <li><a href="스소.html">- 스마트 소프트웨어학과</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span>학번별</span>
+                    <ul class="category_ul">
+                        <li id="id_20"><a href="20.html">- 20학번</a></li>
+                        <li id="id_21"><a href="21.html">- 21학번</a></li>
+                        <li id="id_22"><a href="22.html">- 22학번</a></li>
+                        <li id="id_23"><a href="23.html">- 23학번</a></li>
+                        <li id="id_24"><a href="24.html">- 24학번</a></li>
+                        <li id="id_25"><a href="25.html">- 25학번</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span>날짜/시간별</span>
+                    <ul class="category_ul">
+                        <li id="week_lun"><a href="평일 점심.html">- 평일 점심</a></li>
+                        <li id="week_din"><a href="평일 저녁.html">- 평일 저녁</a></li>
+                        <li id="end_lun"><a href="주말 점심.html">- 주말 점심</a></li>
+                        <li id="end_din"><a href="주말 저녁.html">- 주말 저녁</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
 
         <div id="content_1"><!--게시판 부분-->
             <div class="board-header">
                 <h2 id="board-title">전체 게시판</h2>
-                <a href="./게시판 글쓰기 화면.html"><button id="write-button">글쓰기</button></a>
+                <button id="write-button">글쓰기</button>
             </div>
             <div id="content_2">
                 <ul class="list content_2_ul" id="post-list"><!--게시글 전체 부분-->
@@ -170,7 +169,6 @@
             }
         }
 
-
         function loadPostsByCategory(schoolCategory) {
             db.collection('posts')
             .where("school", "==", schoolCategory)  // 카테고리별 게시글을 필터링
@@ -193,12 +191,22 @@
             });
         }
 
+        // 글쓰기 버튼 클릭 시 로그인 상태 확인
+        document.getElementById('write-button').addEventListener('click', function(event) {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            if (!loggedInUser) {
+                event.preventDefault();
+                alert('로그인을 해주세요.');
+                window.location.href = './로그인.html';
+            } else {
+                window.location.href = './게시판 글쓰기 화면.html';
+            }
+        });
     
         document.addEventListener("DOMContentLoaded", function() {
             loadPosts();
             checkLoginStatus();
         });
     </script>
-  
 </body>
 </html>

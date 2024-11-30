@@ -49,10 +49,6 @@ body {
     align-items: center;
 }
 
-.sidebar img {
-    width: 120px; /* 프로필 이미지 크기 조절 */
-    margin-top: 30px;
-}
 
 .sidebar h1, .sidebar h5 {
     text-align: center;
