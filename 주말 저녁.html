@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>경상국립대학교 게시판</title>
+    <title>주말 저녁 게시판</title>
     <link rel="stylesheet" href="./게시판.css">
 </head>
 <body>
@@ -86,7 +86,7 @@
 
         <div id="content_1"><!--게시판 부분-->
             <div class="board-header">
-                <h2 id="board-title">경상국립대학교 게시판</h2>
+                <h2 id="board-title">주말 저녁 게시판</h2>
                 <a href="./게시판 글쓰기 화면.html"><button id="write-button">글쓰기</button></a>
             </div>
             <div id="content_2">
@@ -102,54 +102,55 @@
 
         function loadPosts() {
             db.collection("posts").orderBy("createdAt", "desc").get().then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    var post = doc.data();
-                    
-                    // 학교가 경상대일 경우만 게시글을 표시
-                    if (post.school === "경상대") {
-                        var liElement = document.createElement("li");
-                        liElement.className = "content_2_li";
+            querySnapshot.forEach((doc) => {
+                var post = doc.data();
 
-                        var postHeader = document.createElement("div");
-                        postHeader.className = "post-header";
-                        var authorElement = document.createElement("b");
-                        authorElement.className = "author";
-                        authorElement.textContent = post.name;
-                        var dateElement = document.createElement("span");
-                        dateElement.className = "date";
-                        dateElement.textContent = post.datetime;
+                var datetime = post.datetime;  
 
-                        postHeader.appendChild(authorElement);
-                        postHeader.appendChild(dateElement);
-                        liElement.appendChild(postHeader);
+                if (datetime === "주말 저녁") {
+                    var liElement = document.createElement("li");
+                    liElement.className = "content_2_li";
 
-                        var titleElement = document.createElement("a");
-                        titleElement.className = "post-title";
-                        titleElement.href = `./게시글 화면.html?id=${doc.id}&title=${encodeURIComponent(post.title)}&name=${encodeURIComponent(post.name)}&school=${encodeURIComponent(post.school)}&major=${encodeURIComponent(post.major)}&entrance=${encodeURIComponent(post.entrance)}&datetime=${encodeURIComponent(post.datetime)}&content=${encodeURIComponent(post.content)}`;
-                        titleElement.textContent = post.title;
-                        liElement.appendChild(titleElement);
+                    var postHeader = document.createElement("div");
+                    postHeader.className = "post-header";
+                    var authorElement = document.createElement("b");
+                    authorElement.className = "author";
+                    authorElement.textContent = post.name;
+                    var dateElement = document.createElement("span");
+                    dateElement.className = "date";
+                    dateElement.textContent = post.datetime;
 
-                        var contentElement = document.createElement("div");
-                        contentElement.className = "post-content";
-                        if (post.content.length > 100) {
-                            const truncatedContent = post.content.slice(0, 100) + '...';
-                            contentElement.innerHTML = truncatedContent + ` <a class="read-more" href="./게시글 화면.html?id=${doc.id}&title=${encodeURIComponent(post.title)}&name=${encodeURIComponent(post.name)}&school=${encodeURIComponent(post.school)}&major=${encodeURIComponent(post.major)}&entrance=${encodeURIComponent(post.entrance)}&datetime=${encodeURIComponent(post.datetime)}&content=${encodeURIComponent(post.content)}">더 보기</a>`;
-                        } else {
-                            contentElement.textContent = post.content;
-                        }
-                        liElement.appendChild(contentElement);
+                    postHeader.appendChild(authorElement);
+                    postHeader.appendChild(dateElement);
+                    liElement.appendChild(postHeader);
 
-                        var hrElement = document.createElement("hr");
-                        hrElement.id = "content_2_hr";
+                    var titleElement = document.createElement("a");
+                    titleElement.className = "post-title";
+                    titleElement.href = `./게시글 화면.html?id=${doc.id}&title=${encodeURIComponent(post.title)}&name=${encodeURIComponent(post.name)}&school=${encodeURIComponent(post.school)}&major=${encodeURIComponent(post.major)}&entrance=${encodeURIComponent(post.entrance)}&datetime=${encodeURIComponent(post.datetime)}&content=${encodeURIComponent(post.content)}`;
+                    titleElement.textContent = post.title;
+                    liElement.appendChild(titleElement);
 
-                        document.getElementById("post-list").appendChild(hrElement);
-                        document.getElementById("post-list").appendChild(liElement);
+                    var contentElement = document.createElement("div");
+                    contentElement.className = "post-content";
+                    if (post.content.length > 100) {
+                        const truncatedContent = post.content.slice(0, 100) + '...';
+                        contentElement.innerHTML = truncatedContent + ` <a class="read-more" href="./게시글 화면.html?id=${doc.id}&title=${encodeURIComponent(post.title)}&name=${encodeURIComponent(post.name)}&school=${encodeURIComponent(post.school)}&major=${encodeURIComponent(post.major)}&entrance=${encodeURIComponent(post.entrance)}&datetime=${encodeURIComponent(post.datetime)}&content=${encodeURIComponent(post.content)}">더 보기</a>`;
+                    } else {
+                        contentElement.textContent = post.content;
                     }
-                });
-            }).catch((error) => {
-                console.error("Error loading posts: ", error);
+                    liElement.appendChild(contentElement);
+
+                    var hrElement = document.createElement("hr");
+                    hrElement.id = "content_2_hr";
+
+                    document.getElementById("post-list").appendChild(hrElement);
+                    document.getElementById("post-list").appendChild(liElement);
+                }
             });
-        }
+        }).catch((error) => {
+            console.error("Error loading posts: ", error);
+        });
+        }   
 
         // 포스트 페이지 로딩 시
         function loadPost() { 
@@ -179,7 +180,6 @@
                 content: decodeURIComponent(urlParams.get('content'))
             };
         }
-
 
         function checkLoginStatus() {
             const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));

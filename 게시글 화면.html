@@ -27,12 +27,13 @@
 
     <div class="header">
         <div class="logo">
-            <a href="메인 홈페이지.html"><img src="./d3.jpg"></a><!--로고 이미지 들어갈 예정-->
+            <a href="메인 홈페이지.html"><img src="./d3.jpg"></a>
         </div>
         <div class="site-info">
             <h1 id="website-name">Table Talk</h1>
         </div>
     </div>
+
     <div class="container">
         <div class="sidebar">
             <h1 id="first_h1"><b>(User Name)</b></h1>
@@ -150,7 +151,8 @@
             if (text) {
                 db.collection('comments').add({
                     text: text,
-                    author: "사용자",
+                    author: JSON.parse(localStorage.getItem('loggedInUser')).id,
+                    postId: getPostDataFromUrl().id,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 }).then(() => {
                     commentText.value = '';

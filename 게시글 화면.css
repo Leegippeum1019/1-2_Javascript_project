@@ -6,10 +6,10 @@ body {
 }
  
 .header {
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: space-between; /*사이에 공간 만든거*/
-    background-color: #f4f4f4 ; /*배경색 변경 가능*/
+    background-color: #f4f4f4; /*배경색 변경 가능*/
     padding: 10px 20px;
 }
 
@@ -17,23 +17,22 @@ body {
     flex: 1;
 }
 
+
 .header .logo img {
     height: 80px; /* 로고 이미지 크기에 따라 바뀔수 있음 */
     width: 255px;  
     /*로고 클릭시 메인 홈페이지 첫 화면 나오게 설정해야함 !!!*/
 }
 
-.site-info {
+.header .site-info {
     flex: 1;
     text-align: center;
 }
 
 #website-name {
-    font-size: 50px; /* 웹사이트 이름 크게 설정 */
-    font-family: 'Arial Black', sans-serif;
+    font-size: 2em; /* 웹사이트 이름 크게 설정 */
     margin: 0; /*여백 제거*/
     text-align: left;
-    color: #456e2a ;
 }
 
 .container {
@@ -166,6 +165,11 @@ body {
     margin: 30px;
 }
 
+#website-name {
+    font-size: 2em; /* 웹사이트 이름 크게 설정 */
+    margin: 0; /*여백 제거*/
+    text-align: left;
+}
 
 .sign-button {
     text-align: center;

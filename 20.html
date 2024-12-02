@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>경상국립대학교 게시판</title>
+    <title>20학번 게시판</title>
     <link rel="stylesheet" href="./게시판.css">
 </head>
 <body>
@@ -86,7 +86,7 @@
 
         <div id="content_1"><!--게시판 부분-->
             <div class="board-header">
-                <h2 id="board-title">경상국립대학교 게시판</h2>
+                <h2 id="board-title">20학번 게시판</h2>
                 <a href="./게시판 글쓰기 화면.html"><button id="write-button">글쓰기</button></a>
             </div>
             <div id="content_2">
@@ -105,8 +105,8 @@
                 querySnapshot.forEach((doc) => {
                     var post = doc.data();
                     
-                    // 학교가 경상대일 경우만 게시글을 표시
-                    if (post.school === "경상대") {
+                    
+                    if (post.entrance === "20학번") {
                         var liElement = document.createElement("li");
                         liElement.className = "content_2_li";
 
@@ -179,7 +179,6 @@
                 content: decodeURIComponent(urlParams.get('content'))
             };
         }
-
 
         function checkLoginStatus() {
             const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
